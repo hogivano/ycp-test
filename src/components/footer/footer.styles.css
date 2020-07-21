@@ -1,3 +1,10 @@
 footer {
-    padding: 15px 20px;
+    padding: 1rem 0;
+    background-color: rgb(245, 245, 245);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+footer code {
+    font-size: 12px;
 }

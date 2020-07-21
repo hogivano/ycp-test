@@ -1,4 +1,66 @@
-.header {
-    padding-top: 15px;
-    padding-bottom: 15px;
+header {
+    background-color: rgb(106, 138, 211);
+}
+
+.navbar {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.navbar a {
+    /* margin: auto; */
+}
+
+.navbar-brand {
+    width: 3rem;
+}
+
+.navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.navbar-nav .nav-item {
+    padding: 0 10px;
+}
+
+.navbar-nav .nav-item.active {
+
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: violet;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+
+@media (max-width: 576px){
+    .navbar a {
+        margin: auto;
+    }
 }

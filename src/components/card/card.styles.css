@@ -1,0 +1,15 @@
+.card {
+    padding: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.card .title {
+    color: rgb(106, 138, 211);
+}
+
+.card .body {
+    padding-top: .75em;
+    font-size: 15px;
+}

@@ -3,8 +3,8 @@ import './container.styles.css'
 
 export const Container = props => {
     return (
-        <main className="container">
+        <section className="container">
             { props.children }
-        </main>
+        </section>
     )
 }

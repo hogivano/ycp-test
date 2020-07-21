@@ -2,29 +2,13 @@ import React from 'react'
 import { Container } from './components/container/container.component'
 import {CardList} from './components/card-list/card-list.component'
 import { Header } from './components/header/header.component'
+import { Footer } from './components/footer/footer.component'
+import { SearchBox } from './components/searchbox/search-box.component'
+import { Card } from './components/card/card.component'
+import Users from './contains/users/users.contain'
+
 import logo from './logo.svg'
 import './App.css'
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Hello, World
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 class App extends React.Component {
 
@@ -34,7 +18,7 @@ class App extends React.Component {
       greeting: 'Hello, World its using react Component',
       postTemp: 1,
       inputMonster: 'monstering',
-      monsters: []
+      data: []
     }
   }
 
@@ -56,19 +40,13 @@ class App extends React.Component {
     }
   }
 
-  changeInput = (evt) => {
-    this.setState({
-      inputMonster: evt.target.value
-    })
-  }
-
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .catch(err => console.log("Error componentDidMount" + err))
-    .then(users => {
+    .then(posts => {
       this.setState({
-        monsters: users
+        data: posts
       })
     })
     .catch(err => console.log(err))
@@ -76,43 +54,21 @@ class App extends React.Component {
 
   render(){
     return (
-      <Header />
-      <Container>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              {this.state.greeting}
-            </p>
-            <CardList />
-            <button  onClick={this.changeText}>Change Text</button>
-            <section className="monsters">
-              {this.state.monsters.map(
-                monster => <h1 key={monster.id}>{monster.name}</h1>
+      <main>
+        <Header/>
+        <Container>
+          <SearchBox />
+          <div className="row pv-15px">
+            <CardList className="col-7 col-sm-12">
+              {this.state.data.map(
+                  d =>  <Card key={d.id} title={d.title} body={d.body} />
               )}
-              <input value={this.state.inputMonster} onChange={this.changeInput}/>
-              <button onClick={() => {
-                const newMonsters = this.state.monsters
-                newMonsters.push({
-                  name: this.state.inputMonster,
-                  id: this.state.monsters[this.state.monsters.length - 1].id + 1
-                })
-                this.setState({
-                  monsters: newMonsters
-                })
-              }}>Add monster</button>
-            </section>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-        </div>
-      </Container>
+            </CardList>
+            <Users className="col-3 col-sm-12"></Users>
+          </div>
+        </Container>
+        <Footer/>
+      </main>
     )
   }
 }
