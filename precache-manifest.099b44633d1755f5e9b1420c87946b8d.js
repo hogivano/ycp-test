@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5a7b5a2b3b933e4e4669c98920fa095d",
+    "revision": "adc56de7b92546130536474c0c17a960",
     "url": "/ycp-test/index.html"
   },
   {
-    "revision": "085fefc17244a6977540",
-    "url": "/ycp-test/static/css/main.d1eb2391.chunk.css"
+    "revision": "3cec135b1b93bfb2d1d7",
+    "url": "/ycp-test/static/css/main.e7631648.chunk.css"
   },
   {
     "revision": "ffeb019c59b5d92891bb",
@@ -16,15 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ycp-test/static/js/2.335ab379.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "085fefc17244a6977540",
-    "url": "/ycp-test/static/js/main.6ae22aab.chunk.js"
+    "revision": "3cec135b1b93bfb2d1d7",
+    "url": "/ycp-test/static/js/main.6868d608.chunk.js"
   },
   {
     "revision": "ea61bc3bb99b4f55b59e",
     "url": "/ycp-test/static/js/runtime-main.027eb2d1.js"
-  },
-  {
-    "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
-    "url": "/ycp-test/static/media/logo.5d5d9eef.svg"
   }
 ]);
