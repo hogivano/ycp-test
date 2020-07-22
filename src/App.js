@@ -19,6 +19,7 @@ class App extends React.Component {
       greeting: 'Hello, World its using react Component',
       postTemp: 1,
       inputData: '',
+      clickUserId: 0,
       data: []
     }
 
@@ -27,7 +28,7 @@ class App extends React.Component {
   }
 
   changeText = () => {
-    if(this.state.postTemp == 1){
+    if(this.state.postTemp === 1){
       const greeting1 = 'Hello, Hendriyan Ogivano'
       
       this.setState({
@@ -50,6 +51,12 @@ class App extends React.Component {
     })
   }
 
+  methodHandleClickUser = (val) => {
+    this.setState({
+      clickUserId: val
+    }, () => console.log(this.state.clickUserId))
+  }
+
   // menggunakan format arrow function sama seperti methodHandleChange namun beda cara dan lebih simple
   arrowHandleChange = e => {
     this.setState({
@@ -70,10 +77,23 @@ class App extends React.Component {
   }
 
   render(){
-    const { data, inputData } = this.state
-    const filteredData = data.filter(d => (
-      d.title.toLowerCase().includes(inputData.toLowerCase())
-    ))
+    const { data, inputData, clickUserId } = this.state
+    const filteredData = data.filter(d => {
+      if (clickUserId === 0 && inputData === ''){
+        return true
+      }
+
+      if (d.title.toLowerCase().includes(inputData.toLowerCase())){
+        if(clickUserId > 0 && d.userId === clickUserId){
+          return true
+        } else if (clickUserId === 0){
+          return true
+        }
+      }
+      
+      return false
+      // ( || d.userId === clickUserId)
+    })
     return (
       <main>
         <Header/>
@@ -94,7 +114,7 @@ class App extends React.Component {
                       d =>  <Card key={d.id} title={d.title} body={d.body} />
                 )}
             </CardList>
-            <Users className="col-3 col-sm-12"></Users>
+            <Users className="col-3 col-sm-12" handleClick={this.methodHandleClickUser}></Users>
           </div>
         </Container>
         <Footer/>

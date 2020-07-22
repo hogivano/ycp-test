@@ -2,11 +2,11 @@ import React from 'react'
 import './users.styles.css'
 
 class Users extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             data: [],
-            idActive: 1
+            idActive: 0
         }
     }
 
@@ -22,30 +22,45 @@ class Users extends React.Component {
     }
 
     changeIdActive = (val) => {
-        this.setState({
-            idActive: val
+        this.setState( (prevState) => {
+            if (prevState.idActive === val){
+                val = 0
+            }
+            return {
+                idActive: val
+            }
+        }, () => {
+            console.log(this.state.idActive)
+            this.props.handleClick(val)
         })
     }
+
+    generateList = () =>
+        this.state.data.map( value => {
+            if (this.state.idActive === value.id){
+                return (
+                    <div key={value.id} data-id={value.id} onClick={() => {
+                        this.changeIdActive(value.id)
+                    }} className="name-list active">
+                        <p>{value.name}</p>
+                    </div>
+                )
+            } else {
+                return (
+                    <div key={value.id} data-id={value.id} onClick={() =>{
+                        this.changeIdActive(value.id)
+                    }} className="name-list">
+                        <p>{value.name}</p>
+                    </div>
+                )
+            }
+        })
 
     render() {
         return (
             <section className="col-3 users">
                 <h4 className="pv-10px">Users Post</h4>
-                {this.state.data.map( value => {
-                    if (this.state.idActive == value.id){
-                        return (
-                            <div key={value.id} data-id={value.id} onClick={() => this.changeIdActive(value.id) } className="name-list active">
-                                <p>{value.name}</p>
-                            </div>
-                        )
-                    } else {
-                        return (
-                            <div key={value.id} data-id={value.id} onClick={() => this.changeIdActive(value.id)} className="name-list">
-                                <p>{value.name}</p>
-                            </div>
-                        )
-                    }
-                })}
+                {this.generateList()}
             </section>
         )
     }
