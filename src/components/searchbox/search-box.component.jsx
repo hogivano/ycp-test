@@ -1,7 +1,7 @@
 import React from 'react'
 import './search-box.styles.css'
 
-export const SearchBox = props => {
+export const SearchBox = ({placeholder, handleChange}) => {
     return (
         <section className="search-box">
             <label>
@@ -9,7 +9,7 @@ export const SearchBox = props => {
                 Search This Magic!
                 </b>
             </label>
-            <input placeholder="search..." />
+            <input placeholder={placeholder} onChange={handleChange} />
         </section>
     )
 }
